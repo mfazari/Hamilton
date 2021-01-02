@@ -1,0 +1,26 @@
+{
+  "name": "hamilton",
+  "version": "1.0.0",
+  "description": "Financial and Banking tool",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfazari/Hamilton.git"
+  },
+  "keywords": [
+    "finance",
+    "banking"
+  ],
+  "author": "Massimo Fazari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mfazari/Hamilton/issues"
+  },
+  "homepage": "https://github.com/mfazari/Hamilton#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
