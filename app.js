@@ -10,13 +10,23 @@ const router = express.Router();
 app.use(bodyParser.json());
 
 // Present Value
-app.get('/FV/', (req, res) => {
-    var numberofCF = parseInt(req.query.numberofCF)
-    var A = parseInt(req.query.paramA);
-    var B = parseInt(req.query.paramB);
-
-    console.log(A+B)
+app.get('/PV', (req, res) => {
+    var numberCF = parseInt(req.query.numberCF); // Number of Cashflows
+    // console.log(numberCF);
+    var A = [];
+    var interest = parseInt(req.query.interest); // interest
+    for(let i = 1; i <= numberCF; i++) {
+        A.push(parseInt(req.query["CF" + i]));
+        }
+    var PV = [];
+    var temp = 0;
+    for(let x = 0; x < A.length; x++){
+        temp = (A[x] / (1 + interest)^x);
+        PV.push(temp);
+    }
+    res.send(PV);
 })
+
 
 
 app.listen(8000, () => {
