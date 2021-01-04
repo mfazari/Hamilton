@@ -2,8 +2,9 @@
   "name": "hamilton",
   "version": "1.0.0",
   "description": "Financial and Banking tool",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
+    "start": "nodemon --exec babel-node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,15 @@
   },
   "homepage": "https://github.com/mfazari/Hamilton#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "rimraff": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "nodemon": "^2.0.6",
+    "prettier": "2.2.1"
   }
 }
