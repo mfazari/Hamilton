@@ -23,9 +23,9 @@ app.get("/NPV", (req, res) => {
 });
 
 function calculateRBF(interest, n) {
-  let RBF = (1/interest) - ((1/interest)/((1+k)^n));
+  let RBF = 1 / interest - 1 / interest / ((1 + k) ^ n);
   return RBF;
-  }
+}
 
 // Annuity
 app.get("/NPV", (req, res) => {
@@ -34,9 +34,29 @@ app.get("/NPV", (req, res) => {
   } else {
     RBF = parseInt(req.query.RBF);
   }
-  var NPV = parseInt(req.query.NPV;
+  var NPV = parseInt(req.query.NPV);
   var annuity = NPV / RBF;
   res.send(annuity + "");
 });
 
+// Weighted Average Cost of Capital (WACC)
+app.get("/WACC", (req, res) => {
+  var equity = parseInt(req.query.equity);
+  var interest_equity = parseInt(req.query.interest_equity);
+  var BC = parseInt(req.query.BC); // borrowed capital
+  var interest_BC = parseInt(req.query.interest_BC);
+  var WACC = (equity * interest_equity + BC * interest_BC) / (equity + BC);
+  res.send(WACC + "");
+});
+
+// Theoretical value of the pre-emption right
+app.get("/WACC", (req, res) => {
+  var num_old_shares = parseInt(req.query.num_old_shares);
+  var num_new_shares = parseInt(req.query.num_new_shares);
+  var old_price = parseInt(req.query.old_price);
+  var new_price = parseInt(req.query.new_price);
+  var PE_value =
+    (old_price - new_price) / (num_old_shares / num_new_shares + 1);
+  res.send(PE_value + "");
+});
 export default app;
